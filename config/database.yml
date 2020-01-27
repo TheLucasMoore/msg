@@ -5,12 +5,12 @@ default: &default
 
 development:
   <<: *default
-  database: development
+  database: msg_dev
 
 test:
   <<: *default
-  database: test
+  database: msg_test
 
 production:
   <<: *default
-  database: production
+  database: msg_prod

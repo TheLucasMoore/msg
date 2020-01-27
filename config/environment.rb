@@ -18,6 +18,6 @@ ActiveRecord::Base.establish_connection(
  :host     => db.host,
  :username => db.user,
  :password => db.password,
- :database => db.path[1..-1],
+ :database => 'msg_dev', # CHANGE ME
  :encoding => 'utf8'
 )
