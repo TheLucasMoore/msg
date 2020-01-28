@@ -5,7 +5,7 @@ default: &default
 
 development:
   <<: *default
-  database: msg_dev
+  database: msg_development
 
 test:
   <<: *default
@@ -13,4 +13,4 @@ test:
 
 production:
   <<: *default
-  database: msg_prod
+  database: msg_production

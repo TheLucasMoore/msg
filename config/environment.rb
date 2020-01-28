@@ -17,14 +17,15 @@ ENV['RACK_ENV'] ||= 'development'
 # and all other required files
 require_all 'app'
 
-# Connection to the database
-db = URI.parse(ENV['DATABASE_URL'] || 'postgres:///development')
+# Connection to the database based on rake env, which lines up with database.yml
+db = URI.parse(ENV['DATABASE_URL'] || "postgres:///msg_#{ENV['RACK_ENV']}")
 
+# https://apidock.com/rails/ActiveRecord/Base/establish_connection/class
 ActiveRecord::Base.establish_connection(
- :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+ :adapter  => 'postgresql',
  :host     => db.host,
  :username => db.user,
  :password => db.password,
- :database => 'msg_dev', # CHANGE ME
+ :database => db.path.remove('/'),
  :encoding => 'utf8'
 )

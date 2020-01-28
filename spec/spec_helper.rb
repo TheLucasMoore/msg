@@ -2,11 +2,15 @@ require 'rack/test'
 require 'rspec'
 require './config/environment.rb'
 
+# http://sinatrarb.com/testing.html
+
 ENV['RACK_ENV'] = 'test'
 
 module RSpecMixin
-  include Rack::Test::Methods
-  def app() Sinatra::Application end
+  include Rack::Test::Methods # needed for controller tests
+  def app
+    Sinatra::Application
+  end
 end
 
 # For RSpec 2.x and 3.x
