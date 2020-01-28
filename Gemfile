@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
+gem 'sinatra-contrib' # gives us auto-reload
 gem 'thin' # recommended in the sinatra docs
 gem 'rake'
 gem 'require_all'
@@ -15,4 +16,9 @@ gem 'activerecord', :require => 'active_record'
 group :development, :test do
   gem 'pry'
   gem 'rb-readline'
+end
+
+group :test do
+  gem 'rack-test'
+  gem 'rspec'
 end
