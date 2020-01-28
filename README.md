@@ -18,6 +18,6 @@ $ rackup
 
 ### Testing
 ```
-$ bundle exec rspec spec/path/to_spec.ruby
+$ bundle exec rspec --format documentation
 ```
 

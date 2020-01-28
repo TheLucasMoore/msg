@@ -7,14 +7,22 @@ RSpec.describe Conversation do
     expect(convo.name).to eq "Our Group Text"
   end
 
-  it '.between finds a conversation between users' do
-    user1 = User.create(name: "Lucas")
-    user2 = User.create(name: "Sarah")
-    convo = Conversation.create(name: "Our Group Text")
+  context '.between' do
+    let(:user1) { User.create(name: "Lucas") }
+    let(:user2) { User.create(name: "Sarah") }
     
-    UserConversation.create(user: user1, conversation: convo)
-    UserConversation.create(user: user2, conversation: convo)
+    it 'finds a conversation between users that exists' do
+      convo = Conversation.create(name: "Our Group Text")
+      UserConversation.create(user: user1, conversation: convo)
+      UserConversation.create(user: user2, conversation: convo)
 
-    expect(Conversation.between(user1, user2)).to eq convo
+      expect(Conversation.between(user1, user2)).to eq convo
+    end
+
+    it 'makes a new conversation if not present' do
+      convo = Conversation.between(user1, user2)
+      expect(convo.valid?).to be true
+      expect(convo.name).to be_nil
+    end
   end
 end
