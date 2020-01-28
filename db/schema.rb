@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_040142) do
+ActiveRecord::Schema.define(version: 2020_01_28_050955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2020_01_27_040142) do
     t.integer "user_id"
     t.text "text"
     t.integer "conversation_id"
+    t.datetime "created_at"
   end
 
   create_table "user_conversations", force: :cascade do |t|

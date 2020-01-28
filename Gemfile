@@ -11,7 +11,7 @@ gem 'pg'
 gem 'sinatra-activerecord'
 gem 'activerecord', :require => 'active_record'
 
-# Testing Stuff
+gem 'faker'
 
 group :development, :test do
   gem 'pry'
