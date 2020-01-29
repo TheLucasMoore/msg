@@ -7,8 +7,13 @@ class MessagesController < Sinatra::Base
     User.find(params['user_id']).messages.to_json
   end
 
+  # A sub-resource of user, but pertaining to their conversations
+  get '/users/:user_id/conversations' do
+    User.find(params['user_id']).conversations.to_json
+  end
+
   # Allow a user to send a message to another user.
-  post '/messages/' do
+  post '/messages' do
     sender = User.find(params['sender_id'])
     receipient = User.find(params['receipient_id'])
     text = params['text']

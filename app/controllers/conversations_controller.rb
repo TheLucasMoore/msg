@@ -20,4 +20,10 @@ class ConversationsController < Sinatra::Base
       sorted_messages.to_json
     end
   end
+
+  # Show who is a part of this conversation
+  get '/conversations/:convo_id/users' do
+    conversation = Conversation.find(params[:convo_id])
+    conversation.users.to_json
+  end
 end

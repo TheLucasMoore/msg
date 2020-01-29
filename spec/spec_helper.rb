@@ -19,7 +19,7 @@ RSpec.configure do |c|
   c.include RSpecMixin
   c.include Rack::Test::Methods # needed for controller tests
   
-  # Clean out test database before each run
+  # Clean out test database before each run to keep tests clean
   c.before :all do
     ActiveRecord::Base.subclasses.each(&:delete_all)
   end 

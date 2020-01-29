@@ -3,11 +3,11 @@ require 'spec_helper'
 RSpec.describe ConversationsController do
 
   # Setup this test. Eventually add FactoryBot.
-  let(:user1) { User.create(name: "Lucas") }
-  let(:user2) { User.create(name: "Sarah") }
+  let(:user1) { User.find_or_create_by(name: "Lucas") }
+  let(:user2) { User.find_or_create_by(name: "Sarah") }
   let(:convo) { Conversation.create }
-  let(:uc1) { UserConversation.create(user: user1, conversation: convo) }
-  let(:uc2) { UserConversation.create(user: user2, conversation: convo) }
+  let!(:uc1) { UserConversation.create(user: user1, conversation: convo) }
+  let!(:uc2) { UserConversation.create(user: user2, conversation: convo) }
   
   before :each do
     10.times do |n|
