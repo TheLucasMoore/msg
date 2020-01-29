@@ -1,13 +1,16 @@
 # Sinatra doesn't have the asset pipeline =(
 require 'sinatra'
-require "sinatra/reloader" if development?
 require 'json'
 require 'rake'
-require 'pry'
 require 'active_record'
 require 'sinatra/activerecord'
 require 'sinatra/activerecord/rake'
 require 'require_all'
+
+if development?
+  require 'pry'
+  require "sinatra/reloader"
+end
 
 # sets every controller to default as json
 set :json_encoder, :to_json
