@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Conversation do
+
   it 'should init a conversation' do
     convo = Conversation.new(name: "Our Group Text")
     expect(convo).to be_a Conversation

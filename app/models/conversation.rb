@@ -3,12 +3,14 @@ class Conversation < ActiveRecord::Base
   has_many :user_conversations
   has_many :users, through: :user_conversations
 
+  # Find a conversation between two users
+  # If it doesn't exist, create one.
   def self.between(user_one, user_two)
     # check for existing conversation
     convo = user_one.conversations.select { |convo| convo.users.include?(user_two) }
     
     if convo.present?
-      convo.first
+      convo.first # assuming we only support two users at the moment
     else
       Conversation.create_for_users!(user_one, user_two)
     end
