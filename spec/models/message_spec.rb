@@ -7,7 +7,7 @@ RSpec.describe Message do
     expect(msg.created_at).to be
   end
 
-  it 'adds created_at time stamp if does not exist' do
+  it 'leaves a created_at time stamp if set' do
     frozen_time = 4.days.ago
     msg = Message.create(created_at: frozen_time)
     expect(msg.created_at).to eq frozen_time

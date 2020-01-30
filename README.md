@@ -28,6 +28,12 @@ If for some reason you don't have rack installed, you can run `gem install rack`
 You should then be able to hit `http://localhost:9292/` and see Brad Pitt dancing. Nice!
 Note: You can replace https://msg-api-3000.herokuapp.com/ with `http://localhost:9292/` for all the following examples if running this locally.
 
+## Testing
+```
+$ bundle exec rspec --format documentation
+```
+
+This command will run the whole test suite for you.
 # API Docs
 
 ## Users

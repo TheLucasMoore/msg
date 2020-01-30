@@ -16,13 +16,6 @@ RSpec.describe MessagesController do
     end
   end
 
-  it 'shows all messages for a user' do
-    get "/users/#{user1.id}/messages"
-    expect(last_response).to be_ok
-    body = JSON.parse(last_response.body)
-    expect(body.size).to eq 10
-  end
-
   it 'allows a user to send a message to another' do
     post '/messages', params={"sender_id": user1.id, "receipient_id": user2.id, "text": "Hey there!" }
     expect(last_response.status).to eq 201
