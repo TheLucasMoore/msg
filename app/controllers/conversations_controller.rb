@@ -4,8 +4,8 @@ class ConversationsController < Sinatra::Base
   include LimitConcern
   
   # Show
-  # <Optional> number_messages - params for the number of messages
-  # <Optional> days_ago - params for the time period limit
+  # params[:number_messages] to limit number of messages
+  # params[:days_ago] to limit the timeframe of messages
   get '/conversations/:convo_id' do
     conversation = Conversation.find(params[:convo_id])
     sorted_messages = conversation.sorted_messages

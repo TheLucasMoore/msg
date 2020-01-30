@@ -4,6 +4,8 @@ class MessagesController < Sinatra::Base
   include LimitConcern
 
   # Index with limit params
+  # params[:number_messages] to limit number of messages
+  # params[:days_ago] to limit the timeframe of messages
   get '/messages' do
     messages = Message.all
     limit_response(params, messages)

@@ -26,7 +26,7 @@ $ rackup
 If for some reason you don't have rack installed, you can run `gem install rack`.
 
 You should then be able to hit `http://localhost:9292/` and see Brad Pitt dancing. Nice!
-Note: You can replace `https://msg-api-3000.herokuapp.com/` with `http://localhost:9292/` for all the following examples if running this locally.
+Note: You can replace https://msg-api-3000.herokuapp.com/ with `http://localhost:9292/` for all the following examples if running this locally.
 
 # API Docs
 
@@ -34,14 +34,14 @@ Note: You can replace `https://msg-api-3000.herokuapp.com/` with `http://localho
 
 The users controller is a RESTful way to see what seeded data we have to play around with. 
 
-The first spot to check out is the index at `https://msg-api-3000.herokuapp.com/users`.
+The first spot to check out is the index at https://msg-api-3000.herokuapp.com/users.
 
 You should see an array of all the users.
 ```json
 [{"id":89,"name":"Courtney Orn"},{"id":90,"name":"Mrs. Gwendolyn Torp"}]
 ```
 
-To see more about a user, go to `https://msg-api-3000.herokuapp.com/users/:id` where `:id` is that user's id.
+To see more about a user, go to https://msg-api-3000.herokuapp.com/users/1 where `:id` is that user's id.
 Here we can see all the conversations that this user is a part of: 
 
 ```json
@@ -50,12 +50,22 @@ Here we can see all the conversations that this user is a part of:
 
 ## Messages
 
-To send a message from one user to another, you can POST to `https://msg-api-3000.herokuapp.com/messages` with three parameters:
+### Reading Messages
+To get all messages sent by all users you can GET https://msg-api-3000.herokuapp.com/messages.
+This endpoint takes the same two parameters to limit the response by number and time.
+
+* GET https://msg-api-3000.herokuapp.com/messages?number_messages=1
+* GET https://msg-api-3000.herokuapp.com/messages?days_ago=1
+
+To see all the messages a user has sent, you can use https://msg-api-3000.herokuapp.com/users/1/messages
+
+### Posting Messages
+To send a message from one user to another, you can POST to https://msg-api-3000.herokuapp.com/messages with three parameters:
 1. sender_id - who is sending this message
 2. receipient_id - to whom it should go
 3. text - the contents of the text messages
 
-This will return the sent message. As an example:
+As an example:
 ```bash
 $ curl -X POST 'https://msg-api-3000.herokuapp.com/messages/?sender_id=1&receipient_id=2&text=Hi'
 ```
@@ -66,31 +76,28 @@ This will return the sent message.
 ```
 This will add a new message into two users conversations. If there isn't an existing conversation thread, it will create one.
 
-To get all messages sent by all users you can GET `https://msg-api-3000.herokuapp.com/messages`.
-
-To see all the messages a user has sent, you can use `https://msg-api-3000.herokuapp.com/users/1/messages`
+Note: This one doesn't work on Heroku. Try it locally. 
 
 ## Conversations
 
 A conversation is where messages live. A conversation has many users, but for the sake of this app we'll have the two required users.
 
-To see all the back-and-forth messages in a conversation, check out the data at `https://msg-api-3000.herokuapp.com/conversations/1'.
+To see all the back-and-forth messages in a conversation, check out the data at https://msg-api-3000.herokuapp.com/conversations/1
 This endpoint also has parameters to limit by number of messages and by timeframe.
 
 ## Limit to number of messages
-To limit to the last hundred messages use `https://msg-api-3000.herokuapp.com/conversations/1?number_messages=100`
+To limit to the last hundred messages within a conversation, use https://msg-api-3000.herokuapp.com/conversations/1?number_messages=100
 
 ```json
 [
   {"id":16700,"user_id":3,"text":"Actually, I didn't make the claim that Ruby follows the principle of least surprise. Someone felt the design of Ruby follows that philosophy, so they started saying that. I didn't bring that up, actually.","conversation_id":72,"created_at":"2020-01-29T02:08:25.854Z"},
   {"id":16701,"user_id":4,"text":"Ready are you? What know you of ready? For eight hundred years have I trained Jedi. My own counsel will I keep on who is to be trained. ","conversation_id":72,"created_at":"2020-01-29T02:08:25.858Z"},
   {"id":16702,"user_id":3,"text":"Hi","conversation_id":72,"created_at":"2020-01-29T02:20:17.132Z"},
-  {"id":16703,"user_id":3,"text":"Hi","conversation_id":72,"created_at":"2020-01-29T02:20:50.838Z"}
   ... and on and on
 ]
 ```
 ## Limit by time
-To limit to messages within a certain timeframe use `https://msg-api-3000.herokuapp.com/conversations/1?days_ago=30`
+To limit to messages of a conversation within a certain timeframe use https://msg-api-3000.herokuapp.com/conversations/1?days_ago=30
 
 # Testing
 
@@ -112,7 +119,11 @@ This decision also meant I spent some time on configuration of things that "just
 
 * Model validations are also not super verbose at the moment, since I'm relying on seeded data to play around with this project.
 
+* The seeded data has all the same "created_at" timestamp, so time filtering seems to be all-or-nothing. In reality, the messages were all made on the same day.
+
 * The JSON data is not pretty. I know that. I'm assuming this is just an API and consumers will ingest the JSON directly into a UI.
+
+* The deployed app is on a free Heroku dyno, so please be patient with the first load. =)
 
 ## Bibliography
 
