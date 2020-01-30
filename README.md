@@ -76,7 +76,7 @@ This will return the sent message.
 ```
 This will add a new message into two users conversations. If there isn't an existing conversation thread, it will create one.
 
-Note: This one doesn't work on Heroku. Try it locally. 
+Note: This one doesn't work on Heroku. Try it locally with `curl -X POST 'http://localhost:9292/messages?sender_id=1&receipient_id=2&text=Hi'`
 
 ## Conversations
 
