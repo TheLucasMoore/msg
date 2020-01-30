@@ -1,6 +1,13 @@
 require './config/environment.rb'
 
 class MessagesController < Sinatra::Base
+  include LimitConcern
+
+  # Index with limit params
+  get '/messages' do
+    messages = Message.all
+    limit_response(params, messages)
+  end
   
   # A sub-resource of user, but pertaining to their messages
   get '/users/:user_id/messages' do

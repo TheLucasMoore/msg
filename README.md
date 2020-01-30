@@ -66,6 +66,8 @@ This will return the sent message.
 ```
 This will add a new message into two users conversations. If there isn't an existing conversation thread, it will create one.
 
+To get all messages sent by all users you can GET `https://msg-api-3000.herokuapp.com/messages`.
+
 To see all the messages a user has sent, you can use `https://msg-api-3000.herokuapp.com/users/1/messages`
 
 ## Conversations
