@@ -1,4 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
 <center>
 <h1>Welcome to the Msg API</h1>
 <img src='https://media.giphy.com/media/JltOMwYmi0VrO/giphy.gif'>
+
+<h3>🤓 Check out these endpoints! 💾</h3>
 </center>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <center><h3>🧓 Users</h3></center>
+        <ul>
+          <li>Users index: <a href='https://msg-api-3000.herokuapp.com/users'>/users</a></li>
+          <li>Users show: <a href='https://msg-api-3000.herokuapp.com/users/1'>/users/:id</a></li>
+          <li>See a Users messages: <a href='https://msg-api-3000.herokuapp.com/users/1/messages'>/users/:id/messages</a></li>
+          <li>See a Users conversations: <a href='https://msg-api-3000.herokuapp.com/users/1/conversations'>/users/:id/conversations</a></li>
+        </ul>
+    </div>
+
+    <div class="col-sm-4">
+      <center><h3>💬 Messages</h3></center>
+        <ul>
+          <li>Messages index: <a href='https://msg-api-3000.herokuapp.com/messages'>/messages</a></li>
+          <li>Too much info for ya? Limit it to a few messages: <a href='https://msg-api-3000.herokuapp.com/messages?number_messages=10'>/messages?limit_messages=10</a></li>
+          <li>Or limit by date range: <a href='https://msg-api-3000.herokuapp.com/messages?days_ago=1'>/messages?days_ago=1</a></li>
+          <li>See <a href="https://github.com/TheLucasMoore/msg#posting-messages">the docs</a> for posting new messages.</li>
+        </ul>
+    </div>
+
+    <div class="col-sm-4">
+      <center><h3>📥 Conversations</h3></center>
+        <ul>
+          <li>See the users in a conversation: <a href='https://msg-api-3000.herokuapp.com/conversations/1/users'>conversations/:id/users</a></li>
+          <li>See messages in a conversation: <a href='https://msg-api-3000.herokuapp.com/conversations/1'>/conversations/:id</a></li>
+          <li>You can also limit this by number of messages: <a href='https://msg-api-3000.herokuapp.com/conversations/1?number_messages=10'>/conversations/1?number_messages=10</a></li>
+          <li>You can also also limit this by a date range: <a href='https://msg-api-3000.herokuapp.com/conversations/1?days_ago=1'>/conversations/1?days_ago=1</a></li>
+        </ul>
+    </div>
+  </div>
+</div>
+
+<center>
+<br><br><br><br><br><br><br><br>
+<p>I don't call myself a front end developer, this template is from <a href='https://www.w3schools.com/bootstrap/bootstrap_grid_large.asp' target='_blank'>here</a>. 😎</p>
+</center>
+</body>
+</html>
